@@ -7,7 +7,7 @@ ENV PATH="/home/python/.local/bin:${PATH}"
 
 RUN pip3 install --upgrade pip
 
-COPY ./requirements.txt /app/requirements.txt
+COPY ./openstreetmap/requirements.txt /app/requirements.txt
 
 
 RUN pip3 install -r requirements.txt
@@ -20,4 +20,6 @@ EXPOSE 8080
 
 ENV FLASK_APP=main.py
 USER python
+#ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
+#CMD ["gunicorn --workers $WORKERS --threads $THREADS --timeout $TIMEOUT --bind :$PORT run:app"]
 CMD [ "gunicorn", "main:app", "-b", "0.0.0.0:8080", "--capture-output", "--log-level=debug" ]
