@@ -16,8 +16,8 @@ COPY ./schemas /app/schemas
 
 COPY ./openstreetmap/ /app
 
-EXPOSE 5000
+EXPOSE 8080
 
 ENV FLASK_APP=main.py
 USER python
-CMD [ "gunicorn", "main:app", "-b", "0.0.0.0:5000", "--capture-output", "--log-level=debug" ]
+CMD [ "gunicorn", "main:app", "-b", "0.0.0.0:8080", "--capture-output", "--log-level=debug" ]
