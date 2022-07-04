@@ -4,7 +4,7 @@ services:
      openstreetmap:
         build:
             context: .
-            dockerfile: ./openstreetap/Dockerfile
+            dockerfile: ./openstreetmap/Dockerfile
         image: "osm-preprocessors:latest"
         labels:
             ca.mcgill.a11y.image.preprocessor: 3
